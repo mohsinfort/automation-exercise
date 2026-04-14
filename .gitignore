@@ -1,0 +1,10 @@
+/venv
+/output
+*.log
+*.pyc
+__pycache__/
+.idea/
+.idea
+.pytest_cache/
+.DS_Store
+allure-report/
