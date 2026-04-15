@@ -32,6 +32,11 @@ def config(request: pytest.FixtureRequest):
 
     options.add_argument("--window-size=1920,1080")
 
+    # Set page load strategy to eager to speed up long waits
+    # options.set_capability("pageLoadStrategy", "normal")
+    options.set_capability("pageLoadStrategy", "eager")
+    # options.set_capability("pageLoadStrategy", "none")
+
     if headless:
         options.add_argument("-headless")
 
