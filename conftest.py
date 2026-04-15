@@ -26,6 +26,7 @@ def config(request: pytest.FixtureRequest):
 
     if browser.lower() == "chrome":
         options = ChromeOptions()
+    # add other supported browsers here
     else:
         raise ValueError(f"Browser {browser} is not supported yet!")
 
