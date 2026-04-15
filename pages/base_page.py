@@ -15,10 +15,13 @@ class BasePage:
         self,
         driver: WebDriver,
         url: Optional[str] = None,
+        open_on_init: bool = False,
     ):
         self.driver = driver
         self.url = url or self.url
-        self.driver.get(self.url)
+
+        if open_on_init:
+            self.open(self.url)
 
     def wait(self, timeout: int = None) -> WebDriverWait:
         """
@@ -86,15 +89,6 @@ class BasePage:
         Open the given URL in the browser.
         """
         self.driver.get(url)
-
-    def click_element(self, locator: Tuple[str, str], timeout: int = None):
-        """
-        Wait for element to be clickable and perform click action.
-
-        :param locator: Tuple (By, selector) to locate element
-        :param timeout:  max time to wait for the element (in seconds)
-        """
-        self.wait(timeout=timeout).until(EC.element_to_be_clickable(locator)).click()
 
     def type_text(self, locator: Tuple[str, str], inputText: str, timeout: int = None):
         """
